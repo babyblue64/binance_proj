@@ -76,7 +76,7 @@ const TradeTicker = () => {
 
     return (
         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-            <h2>🚀 Real-Time Crypto Ticker (FastAPI/React)</h2>
+            <h2> Real-Time Crypto Ticker (FastAPI/React)</h2>
             <p>
                 Status: **
                 {isConnected ? 
