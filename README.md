@@ -28,11 +28,11 @@ Step 3: Run backend server
 uvicorn main:app --port 8000
 ```
 
-Server will be running at `http://localhost:8000`
+Websocker server will be running at `http://localhost:8000/ws`
 
 ---
 
-Step 4: Get into ./client_ui, modify the WEBSOCKET_URL to `http://localhost:8000`, and then run:
+Step 4: Get into ./client_ui, modify the WEBSOCKET_URL in TraderTicker.jsx component to `http://localhost:8000/ws`, and then run:
 ```bash
 npm run dev
 ```
