@@ -1,6 +1,7 @@
 ## Live link
 
 Vercel: https://binance-proj.vercel.app/
+
 Netlify: https://binancefrontend.netlify.app/
 
 ## Setup Steps
