@@ -86,7 +86,7 @@ const TradeTicker = () => {
                 <div style={{ border: '1px solid #ccc', padding: '15px', borderRadius: '8px' }}>
                     <h3>{tickerData.symbol || 'Loading...'}</h3>
                     <p>
-                        **Price:** **{formatNumber(tickerData.price)}**
+                        Price: {formatNumber(tickerData.price)}
                         <span style={{ marginLeft: '10px', color: parseFloat(tickerData.change_percent) >= 0 ? 'green' : 'red' }}>
                             ({formatNumber(tickerData.change_percent, true)})
                         </span>
