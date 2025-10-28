@@ -1,32 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react';
+import  { useState, useEffect, useRef } from 'react';
 
-// IMPORTANT: Replace the placeholder with your actual Render deployment URL.
-// Example: const WEBSOCKET_URL = "wss://your-render-app-name.onrender.com/ws";
 const WEBSOCKET_URL = "wss://binance-proj.onrender.com/ws"; // Placeholder for local testing
 
 const TradeTicker = () => {
-    // State to hold the latest received trade data
+
     const [tickerData, setTickerData] = useState(null);
-    // State to hold the connection status
+
     const [isConnected, setIsConnected] = useState(false);
-    // State for any connection errors
+
     const [error, setError] = useState(null);
     
-    // useRef to hold the WebSocket instance so it persists across renders
+
     const ws = useRef(null);
 
     useEffect(() => {
         // Function to establish the WebSocket connection
         const connect = () => {
             console.log(`Attempting to connect to: ${WEBSOCKET_URL}`);
-            // Use the WSS protocol for secure connections (required for Vercel/Netlify/Render in production)
-            // Ensure you use 'wss' if your Render deployment supports HTTPS.
+
             ws.current = new WebSocket(WEBSOCKET_URL); 
 
             ws.current.onopen = () => {
                 console.log('WebSocket Connected!');
                 setIsConnected(true);
-                setError(null); // Clear any previous errors
+                setError(null); 
             };
 
             ws.current.onmessage = (event) => {
@@ -41,31 +38,31 @@ const TradeTicker = () => {
             ws.current.onclose = (event) => {
                 console.log('WebSocket Disconnected. Code:', event.code, 'Reason:', event.reason);
                 setIsConnected(false);
-                setTickerData(null); // Clear data on disconnect
-                // Attempt to reconnect after a delay (e.g., 5 seconds)
+                setTickerData(null); 
+
                 setTimeout(connect, 5000); 
             };
 
             ws.current.onerror = (err) => {
                 console.error('WebSocket Error:', err);
                 setError('Connection failed. Retrying...');
-                ws.current.close(); // Close to trigger the onclose/reconnect logic
+                ws.current.close(); 
             };
         };
 
         // Start the connection process
         connect();
 
-        // Cleanup function: Close the WebSocket connection when the component unmounts
+
         return () => {
             if (ws.current) {
                 console.log('Closing WebSocket connection on component unmount.');
                 ws.current.close();
             }
         };
-    }, []); // Empty dependency array means this runs once on mount and once on unmount
+    }, []); 
 
-    // Helper function to format price and percentage
+
     const formatNumber = (value, isPercent = false) => {
         if (!value) return 'N/A';
         const num = parseFloat(value);
