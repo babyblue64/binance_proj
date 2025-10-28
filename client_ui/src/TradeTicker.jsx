@@ -1,6 +1,6 @@
 import  { useState, useEffect, useRef } from 'react';
 
-const WEBSOCKET_URL = "wss://binance-proj.onrender.com/ws"; // Placeholder for local testing
+const WEBSOCKET_URL = "ws://localhost:8000/ws";
 
 const TradeTicker = () => {
 
