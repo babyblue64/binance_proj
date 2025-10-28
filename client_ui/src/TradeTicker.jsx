@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // IMPORTANT: Replace the placeholder with your actual Render deployment URL.
 // Example: const WEBSOCKET_URL = "wss://your-render-app-name.onrender.com/ws";
-const WEBSOCKET_URL = "wss://https://binance-proj.onrender.com//ws"; // Placeholder for local testing
+const WEBSOCKET_URL = "wss://https://binance-proj.onrender.com/ws"; // Placeholder for local testing
 
 const TradeTicker = () => {
     // State to hold the latest received trade data
